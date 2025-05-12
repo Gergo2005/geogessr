@@ -5,6 +5,39 @@ let panorama;
 let targetLocation;
 let playerMarker;
 
+function initMenu() {
+    // Kattintásra beállítjuk a körszámot
+    document.querySelectorAll('.round-choice').forEach(button => {
+        button.addEventListener('click', function() {
+            maxRounds = parseInt(this.getAttribute('data-rounds'));
+            document.getElementById('start-game').disabled = false; // Engedélyezzük a játék indítást
+            
+            // Töröljük az összes gombon a 'selected' osztályt
+            document.querySelectorAll('.round-choice').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Hozzáadjuk a kiválasztott gombhoz a 'selected' osztályt
+            this.classList.add('selected');
+        });
+    });
+
+    // Budapest vagy Magyarország választás
+    document.querySelectorAll('.location-choice').forEach(button => {
+        button.addEventListener('click', function() {
+            if (this.getAttribute('data-location') === 'budapest') {
+                locationChoice = 'budapest'; // Budapest választás
+            } else {
+                locationChoice = 'magyarország'; // Magyarország választás
+            }
+            document.querySelectorAll('.location-choice').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            this.classList.add('selected'); // Választott gomb stílusa
+        });
+    });
+}
+
 function initGame() {
     // Véletlenszerű helyszín Magyarországon
     targetLocation = getRandomLocation();
