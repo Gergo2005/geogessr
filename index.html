@@ -12,6 +12,19 @@
     <header>
         <h1>Magyar GeoGuessr</h1>
     </header>
+    <main id="menu">
+        <h2>Válassz körszámot:</h2>
+        <button class="round-choice" data-rounds="3">3 Kör</button>
+        <button class="round-choice" data-rounds="5">5 Kör</button>
+        <button class="round-choice" data-rounds="10">10 Kör</button>
+        <h2>Válassz helyszínt:</h2>
+        <button class="location-choice" data-location="budapest">Budapestre</button>
+        <button class="location-choice" data-location="magyarország">Magyarországra</button>
+        <div>
+            <button id="start-game" disabled>JÁTÉK</button>
+            <button id="exit-game">KILÉPÉS</button>
+        </div>
+    </main>
     <main>
         <section id="street-view"></section>
         <section id="map-container">
