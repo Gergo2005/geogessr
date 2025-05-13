@@ -1,5 +1,3 @@
-// Magyar GeoGuessr - Fő JavaScript
-
 let map;
 let panorama;
 let targetLocation;
@@ -42,6 +40,14 @@ function initMenu() {
             this.classList.add('selected'); // Választott gomb stílusa
         });
     });
+
+    // Játék indítása
+    document.getElementById('start-game').addEventListener('click', startGame);
+    
+    // Képesség a kilépéshez
+    document.getElementById('exit-game').addEventListener('click', function() {
+        window.close(); // Bezárja az ablakot
+    });
 }
 
 function startGame() {
@@ -54,30 +60,28 @@ function startGame() {
 }
 
 function initGame() {
-    // Véletlenszerű helyszín Magyarországon
+    // Véletlenszerű helyszín
     targetLocation = getRandomLocation();
 
-    // Street View beállítása
     const streetViewContainer = document.getElementById("street-view");
     panorama = new google.maps.StreetViewPanorama(streetViewContainer, {
         position: targetLocation,
         pov: { heading: 0, pitch: 0 },
         zoom: 1,
+        disableDefaultUI: true, // UI elrejtése
     });
 
-    // Ellenőrizzük, hogy a Street View betöltődött-e
     google.maps.event.addListener(panorama, 'status_changed', function () {
         if (panorama.getStatus() !== 'OK') {
-            console.warn("Nincs Street View ezen a helyen, új hely generálása...");
+            console.warn("Nincs Street View, új hely...");
             targetLocation = getRandomLocation();
             panorama.setPosition(targetLocation);
         }
     });
 
-    // Térkép beállítása és biztosítása, hogy betöltődik
     const mapContainer = document.getElementById("map");
     map = new google.maps.Map(mapContainer, {
-        center: { lat: 47.1625, lng: 19.5033 }, // Magyarország középpontja
+        center: { lat: 47.1625, lng: 19.5033 },
         zoom: 6,
         restriction: {
             latLngBounds: {
@@ -90,32 +94,41 @@ function initGame() {
         },
     });
 
-    // Marker elhelyezése a játékos tippjéhez
     map.addListener("click", (event) => {
         placeMarker(event.latLng);
     });
 
-    // Tipp gomb kezelése
     document.getElementById("submit-guess").addEventListener("click", checkGuess);
-
-    // Következő kör gomb kezelése
     document.getElementById("next-round").addEventListener("click", nextRound);
 }
 
 function getRandomLocation() {
-    const minLat = 45.74;
-    const maxLat = 48.58;
-    const minLng = 16.11;
-    const maxLng = 22.90;
+    let lat, lng;
     
-    const lat = Math.random() * (maxLat - minLat) + minLat;
-    const lng = Math.random() * (maxLng - minLng) + minLng;
-    
+    if (locationChoice === 'budapest') {
+        // Budapest koordináták
+        const minLat = 47.42;
+        const maxLat = 47.57;
+        const minLng = 18.96;
+        const maxLng = 19.15;
+
+        lat = Math.random() * (maxLat - minLat) + minLat;
+        lng = Math.random() * (maxLng - minLng) + minLng;
+    } else {
+        // Magyarország koordináták
+        const minLat = 45.74;
+        const maxLat = 48.58;
+        const minLng = 16.11;
+        const maxLng = 22.90;
+
+        lat = Math.random() * (maxLat - minLat) + minLat;
+        lng = Math.random() * (maxLng - minLng) + minLng;
+    }
+
     return { lat, lng };
 }
 
 function placeMarker(location) {
-    // Ellenőrzés, hogy a tipp Magyarország határain belül van-e
     if (
         location.lat() < 45.74 || location.lat() > 48.58 ||
         location.lng() < 16.11 || location.lng() > 22.90
@@ -139,17 +152,20 @@ function checkGuess() {
 
     const playerPos = playerMarker.getPosition();
     const distance = calculateDistance(playerPos, targetLocation);
-    displayResults(distance);
+    const score = Math.max(0, Math.round(5000 - distance * 10));
+    totalScore += score;
+
+    displayResults(distance, score);
 }
 
 function calculateDistance(pos1, pos2) {
-    const R = 6371; // A Föld sugara kilométerben
+    const R = 6371;
     const dLat = deg2rad(pos2.lat - pos1.lat());
     const dLng = deg2rad(pos2.lng - pos1.lng());
     const a =
-        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.sin(dLat / 2) ** 2 +
         Math.cos(deg2rad(pos1.lat())) * Math.cos(deg2rad(pos2.lat)) *
-        Math.sin(dLng / 2) * Math.sin(dLng / 2);
+        Math.sin(dLng / 2) ** 2;
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
 }
@@ -188,7 +204,4 @@ function nextRound() {
     initGame();
 }
 
-
-
-
-window.onload = initGame;
+initMenu();

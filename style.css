@@ -32,7 +32,8 @@ main {
     max-width: 800px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center; /* A tartalom középre igazítása */
+    align-items: center; /* A tartalom középre igazítása */
     margin-bottom: 1rem;
 }
 
@@ -150,22 +151,23 @@ button.round-choice:active {
     margin-top: 15px;
 }
 
+/* A térkép konténerének középre igazítása */
 #map-container {
     width: 100%;
     max-width: 800px;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    margin: 0 auto; 
-    text-align: center; 
+    justify-content: center; /* A tartalom középre igazítása */
+    align-items: center; /* A tartalom középre igazítása */
+    margin: 0 auto; /* Középre igazítás */
+    text-align: center; /* Középre igazítja a gombot is */
     margin-bottom: 1rem;
 }
 
-
+/* Tipp leadása gomb középre igazítása */
 #submit-guess {
     display: block;
-    margin: 1rem auto; 
+    margin: 1rem auto; /* A gomb középre igazítása */
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -175,7 +177,7 @@ button.round-choice:active {
     border-radius: 5px;
 }
 
-
+/* Menü */
 button.round-choice {
     background-color: #4CAF50;
     color: white;
@@ -186,20 +188,20 @@ button.round-choice {
     border-radius: 8px;
     margin: 10px;
     width: 200px;
-    transition: transform 0.3s ease, background-color 0.3s ease; 
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Animáció hozzáadása */
 }
 
 button.round-choice:hover {
     background-color: #45a049;
-    transform: scale(1.05); 
+    transform: scale(1.05); /* Kisebb animáció a kattintásra */
 }
 
 button.round-choice:active {
     background-color: #388E3C;
 }
 
-
+/* Kiválasztott gombok stílusa */
 button.round-choice.selected {
     background-color: #45a049;
-    transform: scale(1.05); 
+    transform: scale(1.05); /* Animáció a kiválasztott gombhoz */
 }
