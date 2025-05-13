@@ -149,3 +149,57 @@ button.round-choice:active {
 #menu .location-choice {
     margin-top: 15px;
 }
+
+#map-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 auto; 
+    text-align: center; 
+    margin-bottom: 1rem;
+}
+
+
+#submit-guess {
+    display: block;
+    margin: 1rem auto; 
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+
+button.round-choice {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    margin: 10px;
+    width: 200px;
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+}
+
+button.round-choice:hover {
+    background-color: #45a049;
+    transform: scale(1.05); 
+}
+
+button.round-choice:active {
+    background-color: #388E3C;
+}
+
+
+button.round-choice.selected {
+    background-color: #45a049;
+    transform: scale(1.05); 
+}
