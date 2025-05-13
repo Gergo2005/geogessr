@@ -158,16 +158,37 @@ function deg2rad(deg) {
     return deg * (Math.PI / 180);
 }
 
-function displayResults(distance) {
+function displayResults(distance, score) {
     const resultsSection = document.getElementById("results");
     resultsSection.style.display = "block";
 
-    const score = Math.max(0, Math.round(5000 - distance * 10)); // Pontszámítás
-    document.getElementById("score").textContent = `Távolság: ${distance.toFixed(2)} km. Pontszám: ${score}`;
+    const scoreText = `Távolság: ${distance.toFixed(2)} km. Ezen kör pontszáma: ${score}`;
+    document.getElementById("score").textContent = scoreText;
+
+    document.getElementById("score-summary").textContent = 
+        `Pontszám: ${totalScore}`;
+
+    if (currentRound === maxRounds) {
+        document.getElementById("next-round").textContent = "Játék vége";
+    }
 }
 
 function nextRound() {
-    location.reload(); // Újratöltjük az oldalt a következő körhöz
+    if (currentRound >= maxRounds) {
+        alert(`Játék vége! Összesített pontszámod: ${totalScore}`);
+        document.getElementById("next-round").disabled = true;
+        return;
+    }
+
+    currentRound++;
+    document.getElementById("results").style.display = "none";
+    playerMarker?.setMap(null);
+    playerMarker = null;
+
+    initGame();
 }
+
+
+
 
 window.onload = initGame;
