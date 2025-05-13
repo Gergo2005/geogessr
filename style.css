@@ -62,3 +62,90 @@ button:hover {
     margin-top: 1rem;
     display: none;
 }
+
+/* 🔒 Utcanevek eltüntetése a Street View aljáról */
+.gm-style .gm-iv-address {
+    display: none !important;
+}
+
+#score-summary {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #ffffffcc;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Menü */
+#menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+button.round-choice {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    margin: 10px;
+    width: 200px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Animáció hozzáadása */
+}
+
+button.round-choice:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Kisebb animáció a kattintásra */
+}
+
+button.round-choice:active {
+    background-color: #388E3C;
+}
+
+
+/* Helyszínválasztó gombok */
+.location-choice {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    margin: 10px;
+    width: 200px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Animáció hozzáadása */
+}
+
+.location-choice:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Kisebb animáció a kattintásra */
+}
+
+.location-choice:active {
+    background-color: #388E3C;
+}
+
+/* Kiválasztott helyszín kiemelése */
+.location-choice.selected {
+    background-color: #388E3C;
+    color: white;
+    font-weight: bold;
+}
+
+/* A gombok közötti térköz */
+#menu .location-choice {
+    margin-top: 15px;
+}
