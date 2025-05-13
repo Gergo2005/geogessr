@@ -5,6 +5,12 @@ let panorama;
 let targetLocation;
 let playerMarker;
 
+let totalScore = 0;
+let currentRound = 0;
+let maxRounds = 0;
+
+let locationChoice = 'magyarország'; // Alapértelmezett: Magyarország
+
 function initMenu() {
     // Kattintásra beállítjuk a körszámot
     document.querySelectorAll('.round-choice').forEach(button => {
@@ -36,6 +42,15 @@ function initMenu() {
             this.classList.add('selected'); // Választott gomb stílusa
         });
     });
+}
+
+function startGame() {
+    document.getElementById('menu').style.display = 'none'; // Elrejti a menüt
+    document.getElementById('game').style.display = 'block'; // Megjeleníti a játékot
+    totalScore = 0;
+    currentRound = 1;
+    document.getElementById("score-summary").textContent = `Pontszám: ${totalScore}`;
+    initGame();
 }
 
 function initGame() {
