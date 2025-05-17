@@ -103,12 +103,12 @@ button.round-choice {
     border-radius: 8px;
     margin: 10px;
     width: 200px;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Animáció hozzáadása */
+    transition: transform 0.3s ease, background-color 0.3s ease; 
 }
 
 button.round-choice:hover {
     background-color: #45a049;
-    transform: scale(1.05); /* Kisebb animáció a kattintásra */
+    transform: scale(1.05); 
 }
 
 button.round-choice:active {
@@ -127,31 +127,31 @@ button.round-choice:active {
     border-radius: 8px;
     margin: 10px;
     width: 200px;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Animáció hozzáadása */
+    transition: transform 0.3s ease, background-color 0.3s ease; 
 }
 
 .location-choice:hover {
     background-color: #45a049;
-    transform: scale(1.05); /* Kisebb animáció a kattintásra */
+    transform: scale(1.05); 
 }
 
 .location-choice:active {
     background-color: #388E3C;
 }
 
-/* Kiválasztott helyszín kiemelése */
+
 .location-choice.selected {
     background-color: #388E3C;
     color: white;
     font-weight: bold;
 }
 
-/* A gombok közötti térköz */
+
 #menu .location-choice {
     margin-top: 15px;
 }
 
-/* A térkép konténerének középre igazítása */
+
 #map-container {
     width: 100%;
     max-width: 800px;
@@ -164,10 +164,10 @@ button.round-choice:active {
     margin-bottom: 1rem;
 }
 
-/* Tipp leadása gomb középre igazítása */
+
 #submit-guess {
     display: block;
-    margin: 1rem auto; /* A gomb középre igazítása */
+    margin: 1rem auto; 
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -188,12 +188,12 @@ button.round-choice {
     border-radius: 8px;
     margin: 10px;
     width: 200px;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Animáció hozzáadása */
+    transition: transform 0.3s ease, background-color 0.3s ease; 
 }
 
 button.round-choice:hover {
     background-color: #45a049;
-    transform: scale(1.05); /* Kisebb animáció a kattintásra */
+    transform: scale(1.05); 
 }
 
 button.round-choice:active {
@@ -203,5 +203,5 @@ button.round-choice:active {
 /* Kiválasztott gombok stílusa */
 button.round-choice.selected {
     background-color: #45a049;
-    transform: scale(1.05); /* Animáció a kiválasztott gombhoz */
+    transform: scale(1.05); 
 }
