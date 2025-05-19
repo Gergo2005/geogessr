@@ -10,18 +10,15 @@ let maxRounds = 0;
 let locationChoice = 'magyarország'; // Alapértelmezett: Magyarország
 
 function initMenu() {
-    // Kattintásra beállítjuk a körszámot
     document.querySelectorAll('.round-choice').forEach(button => {
         button.addEventListener('click', function() {
             maxRounds = parseInt(this.getAttribute('data-rounds'));
-            document.getElementById('start-game').disabled = false; // Engedélyezzük a játék indítást
+            document.getElementById('start-game').disabled = false; 
             
-            // Töröljük az összes gombon a 'selected' osztályt
             document.querySelectorAll('.round-choice').forEach(btn => {
                 btn.classList.remove('selected');
             });
 
-            // Hozzáadjuk a kiválasztott gombhoz a 'selected' osztályt
             this.classList.add('selected');
         });
     });
@@ -30,23 +27,23 @@ function initMenu() {
     document.querySelectorAll('.location-choice').forEach(button => {
         button.addEventListener('click', function() {
             if (this.getAttribute('data-location') === 'budapest') {
-                locationChoice = 'budapest'; // Budapest választás
+                locationChoice = 'budapest'; 
             } else {
-                locationChoice = 'magyarország'; // Magyarország választás
+                locationChoice = 'magyarország'; 
             }
             document.querySelectorAll('.location-choice').forEach(btn => {
                 btn.classList.remove('selected');
             });
-            this.classList.add('selected'); // Választott gomb stílusa
+            this.classList.add('selected'); 
         });
     });
 
     // Játék indítása
     document.getElementById('start-game').addEventListener('click', startGame);
     
-    // Képesség a kilépéshez
+    // Kilépés
     document.getElementById('exit-game').addEventListener('click', function() {
-        window.close(); // Bezárja az ablakot
+        window.close(); 
     });
 }
 
